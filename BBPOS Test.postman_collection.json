@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "6a9cf340-19b3-4628-bbb7-a4df7bebd028",
+		"name": "BBPOS Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26959234",
+		"_collection_link": "https://red-shuttle-831315.postman.co/workspace/Team-Workspace~f64ccaf8-8957-4a8a-8a65-98d0541a54d9/collection/26959234-6a9cf340-19b3-4628-bbb7-a4df7bebd028?action=share&creator=26959234&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "sign up Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"abc@test.com\" ,\r\n    \"userAccount\" : \"test2\" ,\r\n    \"userPassword\" : \"test2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Request Success with JWT token return",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"abc@test.com\",\r\n    \"userAccount\" : \"test2\" ,\r\n    \"userPassword\" : \"test2\"     \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Request failure with any one parameter is empty",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"\",\r\n    \"userAccount\" : \"test2\" ,\r\n    \"userPassword\" : \"test2\"     \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Request failure with verification failure",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"abc@test.com\",\r\n    \"userAccount\" : \"test2\" ,\r\n    \"userPassword\" : \"test3\"     \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Request with get all mong DB data (Without JWT Token)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/test/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Request with get a mong DB data (Without JWT Token)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/test/user?email=abc@test.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"user"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "abc@test.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Request with get all mong DB data (With JWT Token non expire)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmNAdGVzdC5jb20iLCJleHAiOjE2ODE4MDcwMTh9.DzqWE36oclkQuTb2LUYm_kMNmbaHVf8VTX57Kw8x5yCxr8ek-GfTDoa0-fdMIBMqg1VkvkiY38QaYhQ4vYicIA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/test/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Request with get a mong DB data (With JWT Token non expire)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmNAdGVzdC5jb20iLCJleHAiOjE2ODE4MDcwMTh9.DzqWE36oclkQuTb2LUYm_kMNmbaHVf8VTX57Kw8x5yCxr8ek-GfTDoa0-fdMIBMqg1VkvkiY38QaYhQ4vYicIA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/test/user?email=abc@test.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"user"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "abc@test.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Request with get all mong DB data (With JWT Token expire afrer 30 mins)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmNAdGVzdC5jb20iLCJleHAiOjE2ODE3ODgyNjZ9.HTswbpC9oLM2ZA8M8IQLekG5p449TQxRiWQHOkBipaxojsoK5BYNAqSijv5eJdHJTxuKR1BvFx5fuN7H1CFhXA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"\",\r\n    \"userAccount\" : \"test2\" ,\r\n    \"userPassword\" : \"test2\"     \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/test/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Request with get a mong DB data (With JWT Token expire after 30 mins)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmNAdGVzdC5jb20iLCJleHAiOjE2ODE3OTA0NTV9.29Pz9P3IGr6xV5seW44voAVgFP-RZiS8JOsYvLR9s53YoHody-X1bxB9k76yCx8jqYI9ES5w0o3T29aZe-bgdw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"\",\r\n    \"userAccount\" : \"test2\" ,\r\n    \"userPassword\" : \"test2\"     \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/test/user?email=abc@test.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"user"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "abc@test.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
